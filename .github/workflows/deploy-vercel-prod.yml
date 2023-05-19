@@ -1,0 +1,22 @@
+name: CI/CD Deploy branch
+run-name: Deploy from ${{ inputs.ref-branch }}
+
+on:
+  workflow_dispatch:
+    inputs:
+      ref-branch:
+        description: branch for git checkout
+        type: string
+        default: main
+
+env:
+  VERCEL_ORG_ID: ${{ secrets.VERCEL_TEAM_ID }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ inputs.ref-branch }}
+      - name: Deploy to Vercel
+        run: |
+          vercel --prod --token ${{ secrets.DEVJA_TOKEN }}
