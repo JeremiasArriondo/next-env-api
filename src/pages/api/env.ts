@@ -3,7 +3,7 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 
 type Data = {
   env: string,
-  table: string
+  table?: string
 }
 
 export default function handler(
