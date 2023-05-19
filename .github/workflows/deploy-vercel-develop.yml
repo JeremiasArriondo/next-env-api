@@ -11,6 +11,10 @@ on:
 
 env:
   VERCEL_ORG_ID: ${{ secrets.VERCEL_TEAM_ID }}
+
+jobs:
+  deploy:
+    name: Deploy branch
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository code
